@@ -1,8 +1,4 @@
 ip link show
-nmcli connection modify enp0s3 ipv4.method manual ipv4.adresses 192.168.1.100/24ipv4.gateway 192.168.1.1ipv4.dns 8.8.8.8
-nmcli connection show
-nmcli connection modify 'Wired connection 1' ipv4.method manualipv4.adresses 192.168.1.100/24ipv4.gateway 192.168.1.1 
-nmcli connection modify 'Wired connection 1' ipv4.method manual \ipv4.adresses 192.168.1.100/24 ipv4.gateway 192.168.1.1 ipv4.dns 8.8.8.8
 nmcli connection modify "Wired connection 1" ipv4.method manual ipv4.addresses 192.168.1.100/24 ipv4.gateway 192.168.1.1 ipv4.dns 8.8.8.8
 nmcli connection up "Wired connection 1"
 ip addr show enp0s3
@@ -23,8 +19,8 @@ nmcli connection up "Wired connection 1"
 ip addr show enp0s3
 ping -c 2 192.168.1.1
 ping -c 2 8.8.8.8
+hostnamectl set-hostname mephi-2026.domain.local
 ip route show
-exit
 dnf install -y nginx tcpdump libcap-ng-utils
 cd /tmp
 dnf download tcpdump
@@ -68,18 +64,18 @@ echo "root" > /etc/ssh/denied_users
 sed -i '1i auth required pam_listfile.so onerr=fail item=user sense=deny file=/etc/ssh/denied_users' /etc/pam.d/system-auth
 sed -i '1i auth required pam_listfile.so onerr=fail item=user sense=deny file=/etc/ssh/denied_users' /etc/pam.d/password-auth
 su -
-    1  echo "Hello from Student: M2551165" > /data/mephi-web/index.html
-    2  curl http://localhost
-    3  curl http://192.168.1.100
-    4  cat /data/mephi-web/index.html
-    5  curl http://localhost
-    6  grep root /etc/nginx/nginx.conf
-    7  sudo nano /etc/nginx/nginx.conf
-    8  exit
-    9  sudo whoami
-   10  sudo nano /etc/nginx/nginx.conf
-   11  sudo nginx -t
-   12  sudo systemctl restart nginx
-   13  curl http://localhost
-   14  curl http://192.168.1.100
-   15  history > ~/project_history.txt
+echo "Hello from Student: M2551165" > /data/mephi-web/index.html
+curl http://localhost
+curl http://192.168.1.100
+cat /data/mephi-web/index.html
+curl http://localhost
+grep root /etc/nginx/nginx.conf
+sudo nano /etc/nginx/nginx.conf
+exit
+sudo whoami
+sudo nano /etc/nginx/nginx.conf
+sudo nginx -t
+sudo systemctl restart nginx
+curl http://localhost
+curl http://192.168.1.100
+history > ~/project_history.txt
