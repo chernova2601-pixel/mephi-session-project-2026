@@ -25,6 +25,15 @@ ping -c 2 192.168.1.1
 ping -c 2 8.8.8.8
 ip route show
 exit
+dnf install -y nginx tcpdump libcap-ng-utils
+cd /tmp
+dnf download tcpdump
+rpm -ivh tcpdump-*.rpm
+cd
+nginx -v
+tcpdump --version
+getcap --version
+rpm -q tcpdump
 lsblk
 fdisk /dev/sdb
 partprobe /dev/sdb
